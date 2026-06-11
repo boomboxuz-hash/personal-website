@@ -1,0 +1,6 @@
+# Claude Code lokal sozlamalari
+.claude/settings.local.json
+
+# OS fayllari
+Thumbs.db
+.DS_Store

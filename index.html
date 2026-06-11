@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Islambek Shamuratov — Front-end Dasturchi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">IS<span>.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about"    data-i18n="nav_about">Haqimda</a>
+        <a href="#skills"   data-i18n="nav_skills">Ko'nikmalar</a>
+        <a href="#projects" data-i18n="nav_projects">Loyihalar</a>
+        <a href="#services" data-i18n="nav_services">Xizmatlar</a>
+        <a href="#contact"  data-i18n="nav_contact">Aloqa</a>
+      </nav>
+      <div class="nav-right">
+        <button class="lang-toggle" id="langToggle">RU</button>
+        <button class="burger" id="burger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Dot grid background -->
+    <div class="hero-dots"></div>
+
+    <div class="container hero-inner">
+      <!-- Text side -->
+      <div class="hero-text">
+        <p class="hero-greeting" data-i18n="hero_greeting">Assalomu alaykum, men</p>
+        <h1 class="hero-name">Islambek <span>Shamuratov</span></h1>
+        <h2 class="hero-typed">
+          <span data-i18n="hero_typed_prefix">Men</span>&nbsp;<span id="typed"></span>
+        </h2>
+        <p class="hero-bio" data-i18n="hero_bio">Front-end dasturchi, pedagog va moliyaviy mutaxassis sifatida keng tajribaga ega professional. Zamonaviy web texnologiyalar orqali chiroyli va samarali raqamli yechimlar yarataman.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero_btn1">Loyihalarni ko'rish</a>
+          <a href="#contact"  class="btn btn-outline" data-i18n="hero_btn2">Bog'lanish</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://instagram.com/boomboxuz" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="https://t.me/boomboxuz"          target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+          <a href="https://youtube.com/@boomboxuz"  target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Orbital SVG visual -->
+      <div class="hero-visual">
+        <svg class="orbital-svg" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <filter id="badge-shadow" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(15,43,91,0.18)"/>
+            </filter>
+            <filter id="center-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Outer dashed ring — rotates CW -->
+          <circle class="ring ring-outer" cx="230" cy="230" r="196"
+                  fill="none" stroke="#2E86DE" stroke-width="1.2"
+                  stroke-dasharray="5 11" opacity="0.4"/>
+
+          <!-- Middle ring — rotates CCW -->
+          <circle class="ring ring-middle" cx="230" cy="230" r="148"
+                  fill="none" stroke="#1E56A0" stroke-width="1.5" opacity="0.3"/>
+
+          <!-- Inner ring (static, decorative) -->
+          <circle cx="230" cy="230" r="115" fill="rgba(30,86,160,0.07)"
+                  stroke="#2E86DE" stroke-width="2.5" filter="url(#center-glow)"/>
+
+          <!-- ─── ORBITAL ICON GROUP (rotates CW 18s) ─── -->
+          <g class="orbit-icons">
+            <!-- HTML  @ 0°  → (400, 230) -->
+            <g class="orbit-item">
+              <circle cx="400" cy="230" r="32" fill="#fff" filter="url(#badge-shadow)"/>
+              <text class="orbit-text" x="400" y="225" text-anchor="middle"
+                    fill="#e44d26" font-family="Inter,sans-serif" font-size="10" font-weight="800">&lt;/&gt;</text>
+              <text class="orbit-text" x="400" y="238" text-anchor="middle"
+                    fill="#e44d26" font-family="Inter,sans-serif" font-size="9" font-weight="700">HTML</text>
+            </g>
+
+            <!-- JS  @ 90°  → (230, 400) -->
+            <g class="orbit-item">
+              <circle cx="230" cy="400" r="32" fill="#fff" filter="url(#badge-shadow)"/>
+              <text class="orbit-text" x="230" y="395" text-anchor="middle"
+                    fill="#b8960c" font-family="Inter,sans-serif" font-size="13" font-weight="900">JS</text>
+              <text class="orbit-text" x="230" y="408" text-anchor="middle"
+                    fill="#b8960c" font-family="Inter,sans-serif" font-size="8.5" font-weight="700">JavaScript</text>
+            </g>
+
+            <!-- React  @ 180°  → (60, 230) -->
+            <g class="orbit-item">
+              <circle cx="60" cy="230" r="32" fill="#fff" filter="url(#badge-shadow)"/>
+              <text class="orbit-text" x="60" y="225" text-anchor="middle"
+                    fill="#0277BD" font-family="Inter,sans-serif" font-size="10" font-weight="800">⚛</text>
+              <text class="orbit-text" x="60" y="238" text-anchor="middle"
+                    fill="#0277BD" font-family="Inter,sans-serif" font-size="9" font-weight="700">React</text>
+            </g>
+
+            <!-- CSS  @ 270°  → (230, 60) -->
+            <g class="orbit-item">
+              <circle cx="230" cy="60" r="32" fill="#fff" filter="url(#badge-shadow)"/>
+              <text class="orbit-text" x="230" y="55" text-anchor="middle"
+                    fill="#264de4" font-family="Inter,sans-serif" font-size="10" font-weight="800">#{ }</text>
+              <text class="orbit-text" x="230" y="68" text-anchor="middle"
+                    fill="#264de4" font-family="Inter,sans-serif" font-size="9" font-weight="700">CSS</text>
+            </g>
+          </g><!-- /orbit-icons -->
+
+          <!-- Small pulsing dots on middle ring -->
+          <g class="orbit-dots">
+            <circle cx="378" cy="230" r="5" fill="#2E86DE" opacity="0.7"/>
+            <circle cx="82"  cy="230" r="5" fill="#1E56A0" opacity="0.7"/>
+            <circle cx="230" cy="82"  r="5" fill="#2E86DE" opacity="0.7"/>
+            <circle cx="230" cy="378" r="5" fill="#1E56A0" opacity="0.7"/>
+          </g>
+        </svg>
+
+        <!-- Profile photo centered over SVG -->
+        <div class="profile-wrap">
+          <img src="assets/images/profile.jpg" alt="Islambek Shamuratov" id="profileImg" />
+          <div class="profile-fallback"><i class="fas fa-user"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave at bottom -->
+    <div class="wave-bottom">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,35 C240,70 480,0 720,35 C960,70 1200,0 1440,35 L1440,70 L0,70 Z" fill="#F5F7FA"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section-light" id="about">
+    <div class="container">
+      <div class="section-header gs-fade-up">
+        <span class="section-tag" data-i18n="about_tag">Haqimda</span>
+        <h2 class="section-title" data-i18n="about_title">Kim men?</h2>
+        <p class="section-sub" data-i18n="about_sub">Ko'p sohalarda chuqur bilim va amaliy tajribaga ega mutaxassis</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card gs-stagger">
+          <div class="about-card-icon" style="background:#EBF4FF">
+            <i class="fas fa-laptop-code" style="color:#1E56A0"></i>
+          </div>
+          <h3 data-i18n="card1_title">Front-end Dasturlash</h3>
+          <p class="experience-years" data-i18n="card1_years"><strong>1 yil</strong> amaliy tajriba</p>
+          <p data-i18n="card1_text">HTML, CSS, JavaScript va zamonaviy framework-lar yordamida interaktiv va tezkor web ilovalari yarataman.</p>
+        </div>
+        <div class="about-card gs-stagger">
+          <div class="about-card-icon" style="background:#FFF3E0">
+            <i class="fas fa-calculator" style="color:#E65100"></i>
+          </div>
+          <h3 data-i18n="card2_title">Buxgalteriya</h3>
+          <p class="experience-years" data-i18n="card2_years"><strong>2 yil</strong> amaliy tajriba</p>
+          <p data-i18n="card2_text">Moliyaviy hisobot, buxgalteriya hisobi va iqtisodiy tahlil sohasida keng bilim va ko'nikmalarga egaman.</p>
+        </div>
+        <div class="about-card gs-stagger">
+          <div class="about-card-icon" style="background:#E8F5E9">
+            <i class="fas fa-chalkboard-teacher" style="color:#2E7D32"></i>
+          </div>
+          <h3 data-i18n="card3_title">Informatika Pedagogi</h3>
+          <p class="experience-years" data-i18n="card3_years"><strong>9 yil</strong> amaliy tajriba</p>
+          <p data-i18n="card3_text">Informatika fanini o'qitish, o'quvchilarga dasturlash asoslarini o'rgatish va ta'lim metodologiyasini ishlab chiqish.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wave-section">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills section-white" id="skills">
+    <div class="container">
+      <div class="section-header gs-fade-up">
+        <span class="section-tag" data-i18n="skills_tag">Ko'nikmalar</span>
+        <h2 class="section-title" data-i18n="skills_title">Texnik ko'nikmalar</h2>
+        <p class="section-sub" data-i18n="skills_sub">Front-end texnologiyalar bo'yicha bilim darajam</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skills-bars gs-slide-right">
+          <div class="skill-item">
+            <div class="skill-info"><span>HTML &amp; CSS</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>JavaScript</span><span>70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>React.js</span><span>55%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info"><span>Git &amp; GitHub</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span data-i18n="skill_figma">Figma / UI Dizayn</span><span>60%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+          </div>
+        </div>
+        <div class="skills-tags gs-slide-left">
+          <h3 data-i18n="tech_title">Texnologiyalar</h3>
+          <div class="tags-cloud">
+            <span class="tag">HTML5</span><span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span><span class="tag">React</span>
+            <span class="tag">Tailwind CSS</span><span class="tag">Git</span>
+            <span class="tag">GitHub</span><span class="tag">Figma</span>
+            <span class="tag">VS Code</span><span class="tag">Responsive</span>
+            <span class="tag">REST API</span><span class="tag">npm</span>
+          </div>
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-num" data-target="12">0</span>
+              <span class="stat-label" data-i18n="stat_projects">Loyihalar</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" data-target="9">0</span>
+              <span class="stat-label" data-i18n="stat_exp">Yillik tajriba</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-num" data-target="30">0</span>
+              <span class="stat-label" data-i18n="stat_students">O'quvchilar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-section wave-flip">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#F5F7FA"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects section-light" id="projects">
+    <div class="container">
+      <div class="section-header gs-fade-up">
+        <span class="section-tag" data-i18n="proj_tag">Loyihalar</span>
+        <h2 class="section-title" data-i18n="proj_title">Mening loyihalarim</h2>
+        <p class="section-sub" data-i18n="proj_sub">So'nggi ishlanma va tajriba loyihalarim</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card gs-stagger">
+          <div class="project-img">
+            <div class="project-placeholder"><i class="fas fa-globe"></i></div>
+            <div class="project-overlay">
+              <a href="#" class="btn btn-sm proj-view-btn"><span data-i18n="proj_view">Ko'rish</span> <i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="btn btn-sm btn-dark">GitHub <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="p1_title">Loyiha #1</h3>
+            <p data-i18n="p1_desc">Korporativ veb sayt — zamonaviy dizayn va qulay interfeys bilan yaratilgan biznes sayt.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+        </div>
+        <div class="project-card gs-stagger">
+          <div class="project-img">
+            <div class="project-placeholder" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn btn-sm proj-view-btn"><span data-i18n="proj_view">Ko'rish</span> <i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="btn btn-sm btn-dark">GitHub <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="p2_title">Loyiha #2</h3>
+            <p data-i18n="p2_desc">Online do'kon — mahsulotlar katalogi, savatcha va to'lov tizimi bilan jihozlangan platforma.</p>
+            <div class="project-tags"><span>React</span><span>CSS</span><span>API</span></div>
+          </div>
+        </div>
+        <div class="project-card gs-stagger">
+          <div class="project-img">
+            <div class="project-placeholder" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="project-overlay">
+              <a href="#" class="btn btn-sm proj-view-btn"><span data-i18n="proj_view">Ko'rish</span> <i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="btn btn-sm btn-dark">GitHub <i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 data-i18n="p3_title">Loyiha #3</h3>
+            <p data-i18n="p3_desc">Dashboard — moliyaviy ma'lumotlarni vizualizatsiya qiluvchi interaktiv boshqaruv paneli.</p>
+            <div class="project-tags"><span>React</span><span>Charts</span><span>Tailwind</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-section">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services section-white" id="services">
+    <div class="container">
+      <div class="section-header gs-fade-up">
+        <span class="section-tag" data-i18n="srv_tag">Xizmatlar</span>
+        <h2 class="section-title" data-i18n="srv_title">Nima qilaman?</h2>
+        <p class="section-sub" data-i18n="srv_sub">Sizning raqamli maqsadlaringizga erishishda yordam beraman</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card gs-stagger">
+          <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3 data-i18n="s1_title">Veb Sayt Yaratish</h3>
+          <p data-i18n="s1_desc">Biznesingiz uchun zamonaviy, tezkor va responsive veb saytlar ishlab chiqaman.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i><span data-i18n="s1_f1">Responsive dizayn</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s1_f2">SEO optimizatsiya</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s1_f3">Tez yuklanish</span></li>
+          </ul>
+        </div>
+        <div class="service-card gs-stagger">
+          <div class="service-icon"><i class="fas fa-rocket"></i></div>
+          <h3 data-i18n="s2_title">Landing Page</h3>
+          <p data-i18n="s2_desc">Mahsulot yoki xizmatlaringizni taqdim etish uchun yuqori konversiyali bir sahifalik saytlar yarataman.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i><span data-i18n="s2_f1">Konversiya uchun optimallashtirilgan</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s2_f2">Chiroyli animatsiyalar</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s2_f3">Tezkor yetkazib berish</span></li>
+          </ul>
+        </div>
+        <div class="service-card gs-stagger">
+          <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3 data-i18n="s3_title">UI Dizayn</h3>
+          <p data-i18n="s3_desc">Figma yordamida zamonaviy va foydalanuvchiga qulay interfeys dizayni yarataman.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i><span data-i18n="s3_f1">Figma prototipi</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s3_f2">Dizayn tizimi</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s3_f3">UX tadqiqot</span></li>
+          </ul>
+        </div>
+        <div class="service-card gs-stagger">
+          <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <h3 data-i18n="s4_title">Interfeys Optimizatsiya</h3>
+          <p data-i18n="s4_desc">Mavjud saytingizni tezlashtirish, kod sifatini oshirish va foydalanuvchi tajribasini yaxshilash.</p>
+          <ul class="service-features">
+            <li><i class="fas fa-check"></i><span data-i18n="s4_f1">Tezlik optimallashtirish</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s4_f2">Kod audit</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n="s4_f3">Mobil moslashuv</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section-dark" id="contact">
+    <!-- Animated SVG background -->
+    <svg class="contact-svg-bg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle class="bg-circle bc1" cx="100" cy="100" r="160" fill="none" stroke="rgba(46,134,219,0.12)" stroke-width="1"/>
+      <circle class="bg-circle bc2" cx="700" cy="300" r="120" fill="none" stroke="rgba(46,134,219,0.08)" stroke-width="1"/>
+      <circle class="bg-circle bc3" cx="400" cy="200" r="80"  fill="none" stroke="rgba(46,134,219,0.06)" stroke-width="1"/>
+    </svg>
+
+    <div class="container">
+      <div class="section-header light gs-fade-up">
+        <span class="section-tag light" data-i18n="con_tag">Aloqa</span>
+        <h2 class="section-title" data-i18n="con_title">Bog'laning</h2>
+        <p class="section-sub" data-i18n="con_sub">Loyiha yoki hamkorlik haqida gaplashishga tayyorman</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info gs-slide-right">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <p class="contact-label">Email</p>
+              <a href="mailto:boomboxuz@gmail.com">boomboxuz@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+            <div>
+              <p class="contact-label">Telegram</p>
+              <a href="https://t.me/boomboxuz" target="_blank" rel="noopener">@boomboxuz</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <p class="contact-label" data-i18n="con_location_label">Joylashuv</p>
+              <span data-i18n="con_location">O'zbekiston</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials gs-slide-left">
+          <h3 data-i18n="social_title">Ijtimoiy tarmoqlar</h3>
+          <div class="social-cards">
+            <a href="https://instagram.com/boomboxuz" target="_blank" rel="noopener" class="social-card instagram">
+              <i class="fab fa-instagram"></i>
+              <div><span class="social-name">Instagram</span><span class="social-handle">@boomboxuz</span></div>
+            </a>
+            <a href="https://t.me/boomboxuz" target="_blank" rel="noopener" class="social-card telegram">
+              <i class="fab fa-telegram"></i>
+              <div><span class="social-name">Telegram</span><span class="social-handle">@boomboxuz</span></div>
+            </a>
+            <a href="https://youtube.com/@boomboxuz" target="_blank" rel="noopener" class="social-card youtube">
+              <i class="fab fa-youtube"></i>
+              <div><span class="social-name">YouTube</span><span class="social-handle">@boomboxuz</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer_copy">&copy; 2024 Islambek Shamuratov. Barcha huquqlar himoyalangan.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/boomboxuz" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/boomboxuz"          target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+        <a href="https://youtube.com/@boomboxuz"  target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
