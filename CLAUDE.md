@@ -57,6 +57,14 @@ qo'shing **va** `script.js` dagi ham `uz`, ham `ru` obyektiga kalitni qo'shing.
 - Instagram: `https://instagram.com/boomboxuz`
 - YouTube: `https://youtube.com/@boomboxuz`
 
+## Deploy (VPS — ko'chirish jarayonida)
+
+Sayt GitHub Pages'dan Hetzner VPS'ga ko'chirilmoqda (hozircha ikkalasi ham mavjud):
+- Domain: `remote-control.uz`, Cloudflare DNS orqali (A record, **Proxied** — origin IP shu sababli ataylab oshkor qilinmaydi, kerak bo'lsa mahalliy xotiradan/foydalanuvchidan so'rang)
+- Arxitektura: VPS'da Docker konteynerda (`nginx:alpine`, `Dockerfile` repo ildizida) statik fayllar serve qilinadi, faqat `127.0.0.1:8081`da; host darajasidagi Nginx (`/etc/nginx/sites-available/personal-website.conf`) `remote-control.uz` uchun shu portga reverse-proxy qiladi
+- SSH: foydalanuvchi `boomboxuz` (root kirish o'chirilgan, parol bilan kirish o'chirilgan — faqat SSH key)
+- Holat: Docker + Nginx + konteyner ishlayapti, Cloudflare DNS sozlangan; navbatda — Cloudflare Origin CA sertifikat o'rnatish (SSL/TLS Full strict rejimi uchun), keyin GitHub Pages'ni butunlay almashtirish
+
 ## Deploy (GitHub Pages)
 
 - **Repo:** https://github.com/boomboxuz-hash/personal-website (public)
