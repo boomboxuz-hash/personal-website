@@ -86,7 +86,8 @@ git push
 ## Muhit eslatmalari (bu mashina)
 
 - OS: Windows 10, shell PowerShell 7. Claude Code dagi `!` prefiksi esa **bash** (git-bash) da ishlaydi.
-- `gh` (GitHub CLI) portativ o'rnatilgan: `C:\Users\User\AppData\Local\GitHubCLI\bin\gh.exe`
-  (User PATH ga qo'shilgan; eski terminallarda topilmasa to'liq yo'l bilan chaqiring).
+- `gh` (GitHub CLI) o'rnatilgan: `C:\Program Files\GitHub CLI\gh.exe` (PATH ga qo'shilgan, oddiy
+  `gh` buyrug'i ishlaydi). Push uchun kredensial: `gh auth setup-git` orqali Git Credential
+  Manager o'rniga `gh` autentifikatsiyasidan foydalanish sozlangan (global git config).
 - Git identifikatori: `boomboxuz-hash` / `boomboxuz@gmail.com`. GitHub login: `boomboxuz-hash` (HTTPS).
 - Fayllarda LF→CRRF ogohlantirishi normal (Windows), e'tibor bermaslik mumkin.
