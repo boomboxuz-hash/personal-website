@@ -32,7 +32,6 @@ script.js               # Til almashtirish, burger menyu, GSAP animatsiyalar, Ty
 50x.html                # Caddy server xatolik sahifasi (5xx uchun, ikki tilli)
 assets/images/profile.jpg   # Profil rasmi
 .github/workflows/deploy.yml # GitHub Actions: main'ga push'da VPS'ga rsync (avto-deploy)
-Dockerfile              # Eski (nginx:alpine) — endi ishlatilmaydi, rollback uchun qolgan
 .gitignore              # .claude/settings.local.json va OS fayllarini chiqaradi
 ```
 
