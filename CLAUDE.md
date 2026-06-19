@@ -67,7 +67,7 @@ Hetzner VPS jonli muhit (`remote-control.uz`). Arxitektura **Caddy** ga o'tkazil
 - Server: VPS'da **Caddy** (`/etc/caddy/Caddyfile`) statik fayllarni to'g'ridan-to'g'ri serve qiladi: `root /var/www/personal-website`, `:80`→`:443` redirect, HTTP/2+HTTP/3
 - TLS: **Cloudflare Origin CA** sertifikat `/etc/ssl/cloudflare/{cert.pem,key.pem}` (2041-gacha, `root:caddy`, kalit `640`). Cloudflare SSL/TLS rejimi **Full (strict)**
 - SSH: shaxsiy foydalanuvchi `boomboxuz` (sudo bor); deploy uchun alohida **sudo'siz `deploy`** foydalanuvchi (faqat `/var/www/personal-website` egasi). Root va parol bilan kirish o'chirilgan — faqat SSH key
-- Eski Docker konteyner (`personal-website`) to'xtatilgan (`--restart=no`), Nginx `disable` qilingan — rollback uchun qolgan, keraksiz bo'lsa tozalash mumkin
+- Eski Docker konteyner va image'lar **o'chirildi** (2026-06-19); Nginx `disable` qilingan, lekin paketi hali o'rnatilgan (kerak bo'lsa olib tashlash mumkin). Docker demon hali o'rnatilgan, lekin hech narsa ishlatmaydi
 
 ## Avto-deploy (GitHub Actions → VPS)
 
