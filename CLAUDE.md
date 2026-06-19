@@ -29,7 +29,10 @@ Sof statik sayt — build qadami yoki npm yo'q. Hammasi 3 ta fayl:
 index.html              # Yagona sahifa: navbar, hero, about, skills, projects, services, contact, footer
 style.css               # Barcha uslublar (CSS o'zgaruvchilari :root da)
 script.js               # Til almashtirish, burger menyu, GSAP animatsiyalar, Typed.js, statistika hisoblagich
+50x.html                # Caddy server xatolik sahifasi (5xx uchun, ikki tilli)
 assets/images/profile.jpg   # Profil rasmi
+.github/workflows/deploy.yml # GitHub Actions: main'ga push'da VPS'ga rsync (avto-deploy)
+Dockerfile              # Eski (nginx:alpine) — endi ishlatilmaydi, rollback uchun qolgan
 .gitignore              # .claude/settings.local.json va OS fayllarini chiqaradi
 ```
 
@@ -57,13 +60,22 @@ qo'shing **va** `script.js` dagi ham `uz`, ham `ru` obyektiga kalitni qo'shing.
 - Instagram: `https://instagram.com/boomboxuz`
 - YouTube: `https://youtube.com/@boomboxuz`
 
-## Deploy (VPS — ko'chirish jarayonida)
+## Deploy (VPS — asosiy, jonli)
 
-Sayt GitHub Pages'dan Hetzner VPS'ga ko'chirilmoqda (hozircha ikkalasi ham mavjud):
+Hetzner VPS jonli muhit (`remote-control.uz`). Arxitektura **Caddy** ga o'tkazildi (Docker + Nginx olib tashlandi):
 - Domain: `remote-control.uz`, Cloudflare DNS orqali (A record, **Proxied** — origin IP shu sababli ataylab oshkor qilinmaydi, kerak bo'lsa mahalliy xotiradan/foydalanuvchidan so'rang)
-- Arxitektura: VPS'da Docker konteynerda (`nginx:alpine`, `Dockerfile` repo ildizida) statik fayllar serve qilinadi, faqat `127.0.0.1:8081`da; host darajasidagi Nginx (`/etc/nginx/sites-available/personal-website.conf`) `remote-control.uz` uchun shu portga reverse-proxy qiladi
-- SSH: foydalanuvchi `boomboxuz` (root kirish o'chirilgan, parol bilan kirish o'chirilgan — faqat SSH key)
-- Holat: Docker + Nginx + konteyner ishlayapti, Cloudflare DNS sozlangan; navbatda — Cloudflare Origin CA sertifikat o'rnatish (SSL/TLS Full strict rejimi uchun), keyin GitHub Pages'ni butunlay almashtirish
+- Server: VPS'da **Caddy** (`/etc/caddy/Caddyfile`) statik fayllarni to'g'ridan-to'g'ri serve qiladi: `root /var/www/personal-website`, `:80`→`:443` redirect, HTTP/2+HTTP/3
+- TLS: **Cloudflare Origin CA** sertifikat `/etc/ssl/cloudflare/{cert.pem,key.pem}` (2041-gacha, `root:caddy`, kalit `640`). Cloudflare SSL/TLS rejimi **Full (strict)**
+- SSH: shaxsiy foydalanuvchi `boomboxuz` (sudo bor); deploy uchun alohida **sudo'siz `deploy`** foydalanuvchi (faqat `/var/www/personal-website` egasi). Root va parol bilan kirish o'chirilgan — faqat SSH key
+- Eski Docker konteyner (`personal-website`) to'xtatilgan (`--restart=no`), Nginx `disable` qilingan — rollback uchun qolgan, keraksiz bo'lsa tozalash mumkin
+
+## Avto-deploy (GitHub Actions → VPS)
+
+`main` branch'ga push qilinganda (sayt fayllari o'zgarsa) `.github/workflows/deploy.yml` ishga tushadi va `rsync --delete` orqali fayllarni VPS'dagi `/var/www/personal-website` ga yetkazadi.
+- Ulanish: `deploy` foydalanuvchi + maxsus SSH deploy kaliti
+- GitHub repo sekretlari: `DEPLOY_SSH_KEY` (private key), `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_KNOWN_HOSTS`
+- rsync `--exclude`: `.git`, `.github`, `CLAUDE.md`, `Dockerfile`, `.gitignore`, `README.md` (web bo'lmagan fayllar webroot'ga tushmaydi)
+- Qo'lda ishga tushirish: `gh workflow run "Deploy to VPS"` yoki Actions tab'dan; holat: `gh run list`
 
 ## Deploy (GitHub Pages)
 
