@@ -77,13 +77,12 @@ Hetzner VPS jonli muhit (`remote-control.uz`). Arxitektura **Caddy** ga o'tkazil
 - rsync `--exclude`: `.git`, `.github`, `CLAUDE.md`, `Dockerfile`, `.gitignore`, `README.md` (web bo'lmagan fayllar webroot'ga tushmaydi)
 - Qo'lda ishga tushirish: `gh workflow run "Deploy to VPS"` yoki Actions tab'dan; holat: `gh run list`
 
-## Deploy (GitHub Pages)
+## GitHub repo
 
 - **Repo:** https://github.com/boomboxuz-hash/personal-website (public)
-- **Jonli sayt:** https://boomboxuz-hash.github.io/personal-website/
-- **Manba:** `main` branch, ildiz (`/`) papka — legacy Pages build, HTTPS majburiy
-- Push qilingach Pages avtomatik qayta build qiladi (~1 daqiqa). Brauzerda ko'rish uchun
-  **Ctrl+F5** (kesh tozalash).
+- **Jonli sayt:** https://remote-control.uz (VPS/Caddy orqali — yuqoriga qarang)
+- **GitHub Pages:** o'chirilgan (2026-06-19). Sayt endi faqat VPS'da. Kerak bo'lsa
+  Settings → Pages dan qayta yoqish mumkin (`main`/ildiz, legacy build).
 
 ## Ish jarayoni (workflow)
 
